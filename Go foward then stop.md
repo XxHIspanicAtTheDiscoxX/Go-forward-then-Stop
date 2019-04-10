@@ -41,15 +41,6 @@ void drive_forward(){
   digitalWrite(motor_right[1], HIGH);
   delayMicroseconds(400);
 }
-
-void turn_around(){
-  digitalWrite(motor_left[0], HIGH);
-  digitalWrite(motor_left[1], LOW);
-  digitalWrite(motor_right[0], HIGH);
-  digitalWrite(motor_right[1], LOW);
-  delay(600);
-}
-
 float distance(int angle){
   servo.write(angle);
   delay(500);
@@ -63,6 +54,7 @@ float distance(int angle){
   forwarddistance = duration / 58;
   return forwarddistance;
 }
+
 
 //-------------Sensor module
 void scan_area(){
@@ -118,15 +110,6 @@ void loop(){
        return;
        Serial.println("Restarted the Loop");
        delay(100);
-    }
-    
-    else {
-      turn_around();
-      brake();
-      delay(1000);
-      drive_forward();
-      delay(1000);
-      Serial.println("6");
     }
   }
 }
